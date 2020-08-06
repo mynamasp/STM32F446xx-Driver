@@ -260,9 +260,9 @@ Discarded input sections
  .text.GPIO_PeriClockControl
                 0x0000000000000000      0x1a0 drivers/Src/stm32f44xx_gpio_driver.o
  .text.GPIO_Init
-                0x0000000000000000       0x12 drivers/Src/stm32f44xx_gpio_driver.o
+                0x0000000000000000      0x18c drivers/Src/stm32f44xx_gpio_driver.o
  .text.GPIO_Deinit
-                0x0000000000000000       0x12 drivers/Src/stm32f44xx_gpio_driver.o
+                0x0000000000000000      0x144 drivers/Src/stm32f44xx_gpio_driver.o
  .text.GPIO_ReadFromInputPin
                 0x0000000000000000       0x18 drivers/Src/stm32f44xx_gpio_driver.o
  .text.GPIO_ReadFromInputPort
@@ -277,8 +277,8 @@ Discarded input sections
                 0x0000000000000000       0x1c drivers/Src/stm32f44xx_gpio_driver.o
  .text.GPIO_IRQHandling
                 0x0000000000000000       0x14 drivers/Src/stm32f44xx_gpio_driver.o
- .debug_info    0x0000000000000000      0x577 drivers/Src/stm32f44xx_gpio_driver.o
- .debug_abbrev  0x0000000000000000       0xe4 drivers/Src/stm32f44xx_gpio_driver.o
+ .debug_info    0x0000000000000000      0x5b4 drivers/Src/stm32f44xx_gpio_driver.o
+ .debug_abbrev  0x0000000000000000      0x125 drivers/Src/stm32f44xx_gpio_driver.o
  .debug_aranges
                 0x0000000000000000       0x68 drivers/Src/stm32f44xx_gpio_driver.o
  .debug_ranges  0x0000000000000000       0x58 drivers/Src/stm32f44xx_gpio_driver.o
@@ -290,10 +290,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xef drivers/Src/stm32f44xx_gpio_driver.o
  .debug_macro   0x0000000000000000       0x6a drivers/Src/stm32f44xx_gpio_driver.o
  .debug_macro   0x0000000000000000      0x1df drivers/Src/stm32f44xx_gpio_driver.o
- .debug_macro   0x0000000000000000      0x279 drivers/Src/stm32f44xx_gpio_driver.o
+ .debug_macro   0x0000000000000000      0x2b1 drivers/Src/stm32f44xx_gpio_driver.o
  .debug_macro   0x0000000000000000       0xc4 drivers/Src/stm32f44xx_gpio_driver.o
- .debug_line    0x0000000000000000      0x4ef drivers/Src/stm32f44xx_gpio_driver.o
- .debug_str     0x0000000000000000     0x4fcf drivers/Src/stm32f44xx_gpio_driver.o
+ .debug_line    0x0000000000000000      0x536 drivers/Src/stm32f44xx_gpio_driver.o
+ .debug_str     0x0000000000000000     0x52a0 drivers/Src/stm32f44xx_gpio_driver.o
  .comment       0x0000000000000000       0x7c drivers/Src/stm32f44xx_gpio_driver.o
  .debug_frame   0x0000000000000000      0x1a0 drivers/Src/stm32f44xx_gpio_driver.o
  .ARM.attributes
@@ -652,7 +652,7 @@ OUTPUT(STM32F446xx_Driver.elf elf32-littlearm)
  .debug_ranges  0x0000000000000000       0x10 Src/main.o
  .debug_ranges  0x0000000000000010       0x20 Startup/startup_stm32f446retx.o
 
-.debug_macro    0x0000000000000000     0x125b
+.debug_macro    0x0000000000000000     0x1293
  .debug_macro   0x0000000000000000       0x7f Src/main.o
  .debug_macro   0x000000000000007f      0xa66 Src/main.o
  .debug_macro   0x0000000000000ae5       0x22 Src/main.o
@@ -661,17 +661,17 @@ OUTPUT(STM32F446xx_Driver.elf elf32-littlearm)
  .debug_macro   0x0000000000000be6       0xef Src/main.o
  .debug_macro   0x0000000000000cd5       0x6a Src/main.o
  .debug_macro   0x0000000000000d3f      0x1df Src/main.o
- .debug_macro   0x0000000000000f1e      0x279 Src/main.o
- .debug_macro   0x0000000000001197       0xc4 Src/main.o
+ .debug_macro   0x0000000000000f1e      0x2b1 Src/main.o
+ .debug_macro   0x00000000000011cf       0xc4 Src/main.o
 
 .debug_line     0x0000000000000000      0x45a
  .debug_line    0x0000000000000000      0x3d6 Src/main.o
  .debug_line    0x00000000000003d6       0x84 Startup/startup_stm32f446retx.o
 
-.debug_str      0x0000000000000000     0x4b87
- .debug_str     0x0000000000000000     0x4b56 Src/main.o
-                                       0x4cb1 (size before relaxing)
- .debug_str     0x0000000000004b56       0x31 Startup/startup_stm32f446retx.o
+.debug_str      0x0000000000000000     0x4e47
+ .debug_str     0x0000000000000000     0x4e16 Src/main.o
+                                       0x4f71 (size before relaxing)
+ .debug_str     0x0000000000004e16       0x31 Startup/startup_stm32f446retx.o
                                          0x76 (size before relaxing)
 
 .comment        0x0000000000000000       0x7b
