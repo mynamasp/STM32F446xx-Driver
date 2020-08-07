@@ -17,13 +17,41 @@
  ******************************************************************************
  */
 #include "stm32f446xx.h"
-#include "stm32f446xx_gpio_driver.h"
+#include "stdio.h"
+#define LOW 0
+#define BTN_PRESSED LOW
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
+void delay(void)
+{
+	for(uint32_t i =0;i < 100000;i++);
+}
+
 int main(void)
 {
+	GPIO_Handle_t GpioLed;
+	printf("Hello World\n");
+	GpioLed.pGPIOx = GPIOA;
+	GpioLed.GPIO_PinConfig_t.GPIO_PinNumber = GPIO_PIN_NO_5;
+	GpioLed.GPIO_PinConfig_t.GPIO_PinMode = GPIO_MODE_OUT;
+	GpioLed.GPIO_PinConfig_t.GPIO_PinSpeed = GPIO_SPEED_HIGH;
+	GpioLed.GPIO_PinConfig_t.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+	GpioLed.GPIO_PinConfig_t.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+
+	GPIO_PeriClockControl(GPIOA, ENABLE);
+
+	GPIO_Init(&GpioLed);
+
+
+	while(1){
+		GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+	}
+
+
+
+
 	for(;;);
 }

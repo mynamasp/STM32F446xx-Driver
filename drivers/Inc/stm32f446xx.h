@@ -266,5 +266,7 @@ typedef struct{
 #define GPIOG_REG_RESET()	 do{( RCC->AHB1ENR |= ( 1 << 6));(RCC->AHB1RSTR &= ~(1<<6));}while(0);
 #define GPIOH_REG_RESET()	 do{( RCC->AHB1ENR |= ( 1 << 7));(RCC->AHB1RSTR &= ~(1<<7));}while(0);
 
+#include "stm32f446xx_gpio_driver.h"
+
 
 #endif /* INC_STM32F446XX_H_ */
