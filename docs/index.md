@@ -1,37 +1,171 @@
-## Welcome to GitHub Pages
+## Welcome
 
-You can use the [editor on GitHub](https://github.com/mynamasp/STM32F446xx-Driver/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+I am Developing a Custom HAL Driver For STM32F446xx and STM32F407xx MCU.It Currently Supports
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- GPIO
+- Interrupts
 
-### Markdown
+And Support for the following are yet to come
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- USART
+- SPI
+- I2C
 
+### Documentation
+
+For initializing GPIO Pin as OUTPUT -
 ```markdown
-Syntax highlighted code block
+	GPIO_PinOutput(pGPIOx, PinNumber, PinSpeed, PinOPType, PinPUPDC)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
 
-# Header 1
-## Header 2
-### Header 3
+2. PinNumber -
+  Pin Number of the GPIO Port (Parameters:0,1,2,....,15)
 
-- Bulleted
-- List
+3. PinSpeed - 
+  Pin Speed of the GPIO Pin (Parameters:LOW,MEDIUM,FAST,FULL)
 
-1. Numbered
-2. List
+4. PinOPType -
+  Pin Output like Push-Pull and Open-Drain(Parameters:OD,PP)
 
-**Bold** and _Italic_ and `Code` text
+5. PinPUPDC -
+  Used For Activating Internal PushDown-PullUp resistor(Parameters:NO_PUPD,PUSHDOWN,PULLUP)
+  
+Example : 
+```markdown
+	GPIO_PinOutput(GPIOA, 5, HIGH, PP, NO_PUPD);
+```
+<br>
 
-[Link](url) and ![Image](src)
+
+For initializing GPIO Pin as INPUT -
+```markdown
+	GPIO_PinInput(pGPIOx, PinNumber, PinSpeed, PinPUPDC)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
+
+2. PinNumber -
+  Pin Number of the GPIO Pin (Parameters:0,1,2,....,15)
+
+3. PinSpeed - 
+  Pin Speed of the GPIO Pin (Parameters:LOW,MEDIUM,FAST,FULL)
+
+4. PinPUPDC -
+  Used For Activating Internal PushDown-PullUp resistor(Parameters:NO_PUPD,PUSHDOWN,PULLUP)
+  
+Example : 
+```markdown
+	GPIO_PinInput(GPIOC, 13, HIGH, NO_PUPD);
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mynamasp/STM32F446xx-Driver/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+For initializing GPIO Pin as OTHER -
+```markdown
+	GPIO_PinSetup(pGPIOx, PinNumber, PinMode, PinSpeed, PinOPType, PinPUPDC)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
+
+2. PinNumber -
+  Pin Number of the GPIO Pin (Parameters:0,1,2,....,15)
+
+3. PinMode -
+  The Mode of the GPIO Pin (Parameters:INPUT,OUTPUT,ANALOG,ALTFN,IT_FT,IT_RT_IT_RFT)
+  _NOTE : The IT_FT,IT_RT_IT_RFT Modes uses Interrupt Mode Of the MCU_
+
+4. PinSpeed - 
+  Pin Speed of the GPIO Pin (Parameters:LOW,MEDIUM,FAST,FULL)
+
+5. PinOPType - 
+  Sets the GPIO Pin as Open-Drain , Push-Pull (Parameters:OD,PP,2)
+
+6. PinPUPDC -
+Used For Activating Internal PushDown-PullUp resistor(Parameters:NO_PUPD,PUSHDOWN,PULLUP)
+
+_**NOTE : SET THE PinOPType AS 2 WHEN SETTING THE PIN AS INPUT**_
+
+Example : 
+```markdown
+	GPIO_PinSetup(GPIOB, 14, ANALOG, HIGH, 0,NO_PUPD);
+```
+
+
+
+
+For Writing to a GPIO Pin-
+```markdown
+	GPIO_WriteToOutputPin(pGPIOx, PinNumber, Value)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
+
+2. PinNumber -
+  Pin Number of the GPIO Port (Parameters:0,1,2,....,15)
+
+3. Value - 
+  Value to Write to the GPIO Pin (Parameters:HIGH,LOW)
+  
+Example : 
+```markdown
+	GPIO_WriteToOutputPin(GPIOA, 5, 0);
+```
+
+
+
+For Writing to a GPIO Pin-
+```markdown
+	GPIO_WriteToOutputPin(pGPIOx, Value)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
+
+2. Value - 
+  Value to Write to the GPIO Pin (Parameters:HIGH,LOW)
+  
+Example : 
+```markdown
+	GPIO_WriteToOutputPort(GPIOA, 0);
+```
+
+
+
+For Reading from a GPIO Pin-
+```markdown
+	GPIO_ReadFromInputPin(pGPIOx, PinNumber)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
+
+2. PinNumber -
+  Pin Number of the GPIO Port (Parameters:0,1,2,....,15)
+  
+Example : 
+```markdown
+	GPIO_ReadFromInputPin(GPIOC, 13);
+
+
+
+```
+For Reading from a GPIO Port-
+```markdown
+	GPIO_ReadFromInputPort(pGPIOx)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
+  
+Example : 
+```markdown
+	GPIO_ReadFromInputPort(GPIOC);
+```
