@@ -295,6 +295,19 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber)
 	pGPIOx->ODR ^= ( 1 << PinNumber);
 }
 
+
+void GPIO_PinSetup(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t PinMode,uint8_t PinSpeed,uint8_t PinOPType,uint8_t PinPUPDC){
+	GPIO_Handle_t Gpio;
+	Gpio.pGPIOx = pGPIOx;
+	Gpio.GPIO_PinConfig_t.GPIO_PinNumber = PinNumber;
+	Gpio.GPIO_PinConfig_t.GPIO_PinMode = PinMode;
+	Gpio.GPIO_PinConfig_t.GPIO_PinSpeed = PinSpeed;
+	Gpio.GPIO_PinConfig_t.GPIO_PinOPType = PinOPType;
+	Gpio.GPIO_PinConfig_t.GPIO_PinPuPdControl = PinPUPDC;
+	GPIO_PeriClockControl(pGPIOx, ENABLE);
+	GPIO_Init(&Gpio);
+
+}
 /*********************************************************************
  * @fn      		  - GPIO_IRQConfig
  *

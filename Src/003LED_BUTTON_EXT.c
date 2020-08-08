@@ -44,13 +44,13 @@ int main(void)
 
 	//GPIO_Init(&GpioLed);
 
-	GPIO_PinSetup(GPIOA, 5, OUTPUT, HIGH, PP, NO_PUPD);
+	GPIO_PinSetup(GPIOA, 5, OUTPUT, HIGH, PP, PUSHDOWN);
 
 	GpioBtn.pGPIOx = GPIOC;
 	GpioBtn.GPIO_PinConfig_t.GPIO_PinNumber = GPIO_PIN_NO_13;
 	GpioBtn.GPIO_PinConfig_t.GPIO_PinMode = GPIO_MODE_IN;
 	GpioBtn.GPIO_PinConfig_t.GPIO_PinSpeed = GPIO_SPEED_HIGH;
-	GpioBtn.GPIO_PinConfig_t.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+	GpioBtn.GPIO_PinConfig_t.GPIO_PinPuPdControl = GPIO_PIN_PU;
 
 	GPIO_PeriClockControl(GPIOC, ENABLE);
 

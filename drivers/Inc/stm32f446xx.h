@@ -146,6 +146,24 @@ typedef struct{
 
 }RCC_RegDef_t;
 
+typedef struct{
+	_vo uint32_t	IMR;
+	_vo uint32_t	EMR;
+	_vo uint32_t	RTSR;
+	_vo uint32_t	FTSR;
+	_vo uint32_t	SWIER;
+	_vo uint32_t	PR;
+}EXTI_RegDef_t;
+
+typedef struct{
+	_vo uint32_t	MEMRMP;
+	_vo uint32_t	PMC;
+	_vo uint32_t	EXTICR[4];
+		uint32_t	RESERVED1[2];
+	_vo uint32_t	CMPCR;
+		uint32_t	RESERVED2[2];
+	_vo uint32_t	CFGR;
+}SYSCFG_RegDef_t;
 /*
  * peripheral definitions ( Peripheral base addresses typecasted to xxx_RegDef_t)
  */
@@ -161,6 +179,7 @@ typedef struct{
 
 #define RCC				((RCC_RegDef_t*)RCC_BASEADDR)
 
+#define EXTI  			((EXTI_RegDef_t*)EXTI_BASEADDR)
 /*
  * Clock Enable Macros for GPIOx peripherals
  */
