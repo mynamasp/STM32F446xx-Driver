@@ -121,7 +121,7 @@ Example :
 
 
 
-For Writing to a GPIO Pin-
+For Writing to a GPIO Port-
 ```markdown
 	GPIO_WriteToOutputPin(pGPIOx, Value)
 ```
@@ -137,7 +137,33 @@ Example :
 	GPIO_WriteToOutputPort(GPIOA, 0);
 ```
 
+For Toggling a GPIO Pin-
+```markdown
+	GPIO_ToggleOutputPin(pGPIOx, PinNumber)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
 
+2. PinNumber -
+  Pin Number of the GPIO Port (Parameters:0,1,2,....,15)
+  
+Example : 
+```markdown
+	GPIO_ToggleOutputPin(GPIOA, 5);
+```
+For Toggling a GPIO Port-
+```markdown
+	GPIO_ToggleOutputPort(pGPIOx)
+```
+Parameters -
+1. pGPIOx-
+  Gpio Port (Parameters:GPIOA,GPIOB,....,GPIOH)
+  
+Example : 
+```markdown
+	GPIO_ToggleOutputPin(GPIOA);
+```
 
 For Reading from a GPIO Pin-
 ```markdown
