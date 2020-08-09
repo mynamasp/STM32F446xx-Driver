@@ -85,12 +85,12 @@ Parameters -
   Pin Speed of the GPIO Pin (Parameters:LOW,MEDIUM,FAST,FULL)
 
 5. PinOPType - 
-  Sets the GPIO Pin as Open-Drain , Push-Pull (Parameters:OD,PP,2)
+  Sets the GPIO Pin as Open-Drain , Push-Pull (Parameters:OD,PP,NONE)
 
 6. PinPUPDC -
 Used For Activating Internal PushDown-PullUp resistor(Parameters:NO_PUPD,PUSHDOWN,PULLUP)
 
-_**NOTE : SET THE PinOPType AS 2 WHEN SETTING THE PIN AS INPUT**_
+_**NOTE : SET THE PinOPType AS NONE WHEN SETTING THE PIN AS INPUT**_
 
 Example : 
 ```markdown
