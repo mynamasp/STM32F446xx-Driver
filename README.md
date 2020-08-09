@@ -90,7 +90,7 @@ Parameters -
 6. PinPUPDC -
 Used For Activating Internal PushDown-PullUp resistor(Parameters:NO_PUPD,PUSHDOWN,PULLUP)
 
-_**NOTE : SET THE PinOPType AS 2 WHEN SETTING THE PIN AS INPUT**_
+_**NOTE : SET THE PinOPType AS NONE WHEN SETTING THE PIN AS INPUT**_
 
 Example : 
 ```markdown
