@@ -32,7 +32,7 @@ void delay(void)
 
 int main(void)
 {
-	GPIO_Handle_t GpioBtn;
+
 	//GpioLed.pGPIOx = GPIOA;
 	//GpioLed.GPIO_PinConfig_t.GPIO_PinNumber = GPIO_PIN_NO_5;
 	//GpioLed.GPIO_PinConfig_t.GPIO_PinMode = GPIO_MODE_OUT;
@@ -44,17 +44,21 @@ int main(void)
 
 	//GPIO_Init(&GpioLed);
 
-	GPIO_PinSetup(GPIOA, 5, OUTPUT, HIGH, PP, NO_PUPD);
+	GPIO_PinOutput(GPIOA, 5, FAST, PP, NO_PUPD);
 
-	GpioBtn.pGPIOx = GPIOC;
-	GpioBtn.GPIO_PinConfig_t.GPIO_PinNumber = GPIO_PIN_NO_13;
-	GpioBtn.GPIO_PinConfig_t.GPIO_PinMode = GPIO_MODE_IN;
-	GpioBtn.GPIO_PinConfig_t.GPIO_PinSpeed = GPIO_SPEED_HIGH;
-	GpioBtn.GPIO_PinConfig_t.GPIO_PinPuPdControl = GPIO_NO_PUPD;
 
-	GPIO_PeriClockControl(GPIOC, ENABLE);
+	//GpioBtn.pGPIOx = GPIOC;
+	//GpioBtn.GPIO_PinConfig_t.GPIO_PinNumber = GPIO_PIN_NO_13;
+	//GpioBtn.GPIO_PinConfig_t.GPIO_PinMode = GPIO_MODE_IN;
+	//GpioBtn.GPIO_PinConfig_t.GPIO_PinSpeed = GPIO_SPEED_HIGH;
+	//GpioBtn.GPIO_PinConfig_t.GPIO_PinPuPdControl = GPIO_NO_PUPD;
 
-	GPIO_Init(&GpioBtn);
+	//GPIO_PeriClockControl(GPIOC, ENABLE);
+
+	//GPIO_Init(&GpioBtn);
+
+	//GPIO_PinInput(GPIOC, 13, HIGH, NO_PUPD);
+	GPIO_PinSetup(GPIOC, 13, INPUT, FAST, NONE, NO_PUPD);
 
 	//GPIO_PinSetup(GPIOC, 13, INPUT, HIGH, NO_PUPD);
 

@@ -104,6 +104,25 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHANDLE)
 	}
 	else {
 
+			if(pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinMode == GPIO_MODE_IT_FT)
+			{
+				EXTI->FTSR |=( 1 << pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinNumber);
+				EXTI->RTSR &= ~( 1 << pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinNumber);
+
+
+			}
+			else if (pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinMode == GPIO_MODE_IT_RT)
+			{
+				EXTI->RTSR |=( 1 << pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinNumber);
+				EXTI->FTSR &= ~( 1 << pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinNumber);
+			}
+			else if (pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinMode == GPIO_MODE_IT_RFT)
+			{
+				EXTI->FTSR |=( 1 << pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinNumber);
+				EXTI->RTSR |=( 1 << pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinNumber);
+			}
+
+			EXTI->IMR |= 1<< pGPIOHANDLE->GPIO_PinConfig_t.GPIO_PinNumber;
 	}
 
 	temp=0;
@@ -296,17 +315,46 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber)
 }
 
 
-void GPIO_PinSetup(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t PinMode,uint8_t PinSpeed,uint8_t PinOPType,uint8_t PinPUPDC){
+void GPIO_PinOutput(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t PinSpeed,uint8_t PinOPType,uint8_t PinPUPDC){
 	GPIO_Handle_t Gpio;
 	Gpio.pGPIOx = pGPIOx;
 	Gpio.GPIO_PinConfig_t.GPIO_PinNumber = PinNumber;
-	Gpio.GPIO_PinConfig_t.GPIO_PinMode = PinMode;
+	Gpio.GPIO_PinConfig_t.GPIO_PinMode = 1;
 	Gpio.GPIO_PinConfig_t.GPIO_PinSpeed = PinSpeed;
 	Gpio.GPIO_PinConfig_t.GPIO_PinOPType = PinOPType;
 	Gpio.GPIO_PinConfig_t.GPIO_PinPuPdControl = PinPUPDC;
 	GPIO_PeriClockControl(pGPIOx, ENABLE);
 	GPIO_Init(&Gpio);
 
+}
+
+void GPIO_PinSetup(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t PinMode ,uint8_t PinSpeed,uint8_t PinOPType,uint8_t PinPUPDC){
+	GPIO_Handle_t Gpio;
+	Gpio.pGPIOx = pGPIOx;
+	Gpio.GPIO_PinConfig_t.GPIO_PinNumber = PinNumber;
+	Gpio.GPIO_PinConfig_t.GPIO_PinMode = PinMode;
+	Gpio.GPIO_PinConfig_t.GPIO_PinSpeed = PinSpeed;
+	if(PinOPType != 2){
+	Gpio.GPIO_PinConfig_t.GPIO_PinOPType = PinOPType;
+	}
+	Gpio.GPIO_PinConfig_t.GPIO_PinPuPdControl = PinPUPDC;
+	GPIO_PeriClockControl(pGPIOx, ENABLE);
+	GPIO_Init(&Gpio);
+
+}
+
+
+void GPIO_PinInput(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t PinSpeed,uint8_t PinPUPDC){
+	GPIO_Handle_t Gpio;
+	Gpio.pGPIOx = pGPIOx;
+	Gpio.GPIO_PinConfig_t.GPIO_PinNumber = PinNumber;
+	Gpio.GPIO_PinConfig_t.GPIO_PinMode = 0;
+	Gpio.GPIO_PinConfig_t.GPIO_PinSpeed = PinSpeed;
+	Gpio.GPIO_PinConfig_t.GPIO_PinPuPdControl = PinPUPDC;
+
+	GPIO_PeriClockControl(pGPIOx, ENABLE);
+
+	GPIO_Init(&Gpio);
 }
 /*********************************************************************
  * @fn      		  - GPIO_IRQConfig
