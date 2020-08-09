@@ -37,7 +37,7 @@ int main(void)
 	GpioLed.pGPIOx = GPIOA;
 	GpioLed.GPIO_PinConfig_t.GPIO_PinNumber = GPIO_PIN_NO_5;
 	GpioLed.GPIO_PinConfig_t.GPIO_PinMode = GPIO_MODE_OUT;
-	GpioLed.GPIO_PinConfig_t.GPIO_PinSpeed = GPIO_SPEED_HIGH;
+	GpioLed.GPIO_PinConfig_t.GPIO_PinSpeed = GPIO_SPEED_FAST;
 	GpioLed.GPIO_PinConfig_t.GPIO_PinOPType = GPIO_OP_TYPE_PP;
 	GpioLed.GPIO_PinConfig_t.GPIO_PinPuPdControl = GPIO_NO_PUPD;
 

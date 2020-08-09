@@ -8,6 +8,25 @@
 
 #ifndef INC_STM32F446XX_H_
 #define INC_STM32F446XX_H_
+#define _vo volatile
+
+
+#define NVIC_ISER0				((_vo uint32_t*)0xE000E100)
+#define NVIC_ISER1				((_vo uint32_t*)0xE000E104)
+#define NVIC_ISER2				((_vo uint32_t*)0xE000E108)
+#define NVIC_ISER3				((_vo uint32_t*)0xE000E10C)
+
+
+#define NVIC_ICER0				((_vo uint32_t*)0xE000E180)
+#define NVIC_ICER1				((_vo uint32_t*)0xE000E184)
+#define NVIC_ICER2				((_vo uint32_t*)0xE000E188)
+#define NVIC_ICER3				((_vo uint32_t*)0xE000E18C)
+
+
+
+#define NVIC_PR_BASE_ADDR		((_vo uint32_t*)0xE000E400)
+
+#define NO_PR_BITS_IMPLEMENTED  4
 
 /*
  * base addresses of Flash and SRAM memories
@@ -80,7 +99,7 @@
 #define GPIO_PIN_RESET			RESET
 
 
-#define _vo volatile
+
 
 
 /**********************************peripheral register definition structures **********************************/
@@ -180,6 +199,8 @@ typedef struct{
 #define RCC				((RCC_RegDef_t*)RCC_BASEADDR)
 
 #define EXTI  			((EXTI_RegDef_t*)EXTI_BASEADDR)
+
+#define SYSCFG  		((SYSCFG_RegDef_t*)SYSCFG_BASEADDR)
 /*
  * Clock Enable Macros for GPIOx peripherals
  */
@@ -284,6 +305,26 @@ typedef struct{
 #define GPIOF_REG_RESET()	 do{( RCC->AHB1ENR |= ( 1 << 5));(RCC->AHB1RSTR &= ~(1<<5));}while(0);
 #define GPIOG_REG_RESET()	 do{( RCC->AHB1ENR |= ( 1 << 6));(RCC->AHB1RSTR &= ~(1<<6));}while(0);
 #define GPIOH_REG_RESET()	 do{( RCC->AHB1ENR |= ( 1 << 7));(RCC->AHB1RSTR &= ~(1<<7));}while(0);
+
+
+#define GPIO_BASEADDR_TO_CODE(X)		((X == GPIOA)?0:\
+										 (X == GPIOB)?1:\
+										 (X == GPIOC)?2:\
+										 (X == GPIOD)?3:\
+										 (X == GPIOE)?4:\
+										 (X == GPIOF)?5:\
+										 (X == GPIOH)?6:0)
+
+
+#define IRQ_NO_EXTI0		6
+#define IRQ_NO_EXTI1		7
+#define IRQ_NO_EXTI2		8
+#define IRQ_NO_EXTI3		9
+#define IRQ_NO_EXTI4		10
+#define IRQ_NO_EXTI9_5		23
+#define IRQ_NO_EXTI5_10		40
+
+
 
 #include "stm32f446xx_gpio_driver.h"
 

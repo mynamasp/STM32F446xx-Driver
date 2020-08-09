@@ -179,9 +179,6 @@ Parameters -
 Example : 
 ```markdown
 	GPIO_ReadFromInputPin(GPIOC, 13);
-
-
-
 ```
 For Reading from a GPIO Port-
 ```markdown
