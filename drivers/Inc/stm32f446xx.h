@@ -8,26 +8,39 @@
 
 #ifndef INC_STM32F446XX_H_
 #define INC_STM32F446XX_H_
+#define __vo volatile
 #define _vo volatile
 
 
-#define NVIC_ISER0				((_vo uint32_t*)0xE000E100)
-#define NVIC_ISER1				((_vo uint32_t*)0xE000E104)
-#define NVIC_ISER2				((_vo uint32_t*)0xE000E108)
-#define NVIC_ISER3				((_vo uint32_t*)0xE000E10C)
+/**********************************START:Processor Specific Details **********************************/
+/*
+ * ARM Cortex Mx Processor NVIC ISERx register Addresses
+ */
+
+#define NVIC_ISER0          ((__vo uint32_t*)0xE000E100)
+#define NVIC_ISER1          ( (__vo uint32_t*)0xE000E104 )
+#define NVIC_ISER2          ( (__vo uint32_t*)0xE000E108 )
+#define NVIC_ISER3          ( (__vo uint32_t*)0xE000E10c )
 
 
-#define NVIC_ICER0				((_vo uint32_t*)0xE000E180)
-#define NVIC_ICER1				((_vo uint32_t*)0xE000E184)
-#define NVIC_ICER2				((_vo uint32_t*)0xE000E188)
-#define NVIC_ICER3				((_vo uint32_t*)0xE000E18C)
+/*
+ * ARM Cortex Mx Processor NVIC ICERx register Addresses
+ */
+#define NVIC_ICER0 			((__vo uint32_t*)0XE000E180)
+#define NVIC_ICER1			((__vo uint32_t*)0XE000E184)
+#define NVIC_ICER2  		((__vo uint32_t*)0XE000E188)
+#define NVIC_ICER3			((__vo uint32_t*)0XE000E18C)
 
 
+/*
+ * ARM Cortex Mx Processor Priority Register Address Calculation
+ */
+#define NVIC_PR_BASE_ADDR 	((__vo uint32_t*)0xE000E400)
 
-#define NVIC_PR_BASE_ADDR		((_vo uint32_t*)0xE000E400)
-
+/*
+ * ARM Cortex Mx Processor number of priority bits implemented in Priority Register
+ */
 #define NO_PR_BITS_IMPLEMENTED  4
-
 /*
  * base addresses of Flash and SRAM memories
  */
@@ -165,24 +178,36 @@ typedef struct{
 
 }RCC_RegDef_t;
 
-typedef struct{
-	_vo uint32_t	IMR;
-	_vo uint32_t	EMR;
-	_vo uint32_t	RTSR;
-	_vo uint32_t	FTSR;
-	_vo uint32_t	SWIER;
-	_vo uint32_t	PR;
+/*
+ * peripheral register definition structure for EXTI
+ */
+typedef struct
+{
+	__vo uint32_t IMR;    /*!< Give a short description,          	  	    Address offset: 0x00 */
+	__vo uint32_t EMR;    /*!< TODO,                						Address offset: 0x04 */
+	__vo uint32_t RTSR;   /*!< TODO,  									     Address offset: 0x08 */
+	__vo uint32_t FTSR;   /*!< TODO, 										Address offset: 0x0C */
+	__vo uint32_t SWIER;  /*!< TODO,  									   Address offset: 0x10 */
+	__vo uint32_t PR;     /*!< TODO,                   					   Address offset: 0x14 */
+
 }EXTI_RegDef_t;
 
-typedef struct{
-	_vo uint32_t	MEMRMP;
-	_vo uint32_t	PMC;
-	_vo uint32_t	EXTICR[4];
-		uint32_t	RESERVED1[2];
-	_vo uint32_t	CMPCR;
-		uint32_t	RESERVED2[2];
-	_vo uint32_t	CFGR;
-}SYSCFG_RegDef_t;
+
+/*
+ * peripheral register definition structure for SYSCFG
+ */
+typedef struct
+{
+	__vo uint32_t MEMRMP;       /*!< Give a short description,                    Address offset: 0x00      */
+	__vo uint32_t PMC;          /*!< TODO,     									  Address offset: 0x04      */
+	__vo uint32_t EXTICR[4];    /*!< TODO , 									  Address offset: 0x08-0x14 */
+	uint32_t      RESERVED1[2];  /*!< TODO          							  Reserved, 0x18-0x1C    	*/
+	__vo uint32_t CMPCR;        /*!< TODO         								  Address offset: 0x20      */
+	uint32_t      RESERVED2[2];  /*!<                                             Reserved, 0x24-0x28 	    */
+	__vo uint32_t CFGR;         /*!< TODO                                         Address offset: 0x2C   	*/
+} SYSCFG_RegDef_t;
+
+
 /*
  * peripheral definitions ( Peripheral base addresses typecasted to xxx_RegDef_t)
  */
@@ -247,8 +272,7 @@ typedef struct{
  * Clock Enable Macros for SYSCFG peripheral
  */
 
-#define SYSCFG_PLCK_EN() ( RCC->APB2ENR |= ( 1 << 14))
-
+#define SYSCFG_PCLK_EN() (RCC->APB2ENR |= (1 << 14))
 /*
  * Clock Disable Macros for GPIOx peripherals
  */
@@ -315,15 +339,13 @@ typedef struct{
 										 (X == GPIOF)?5:\
 										 (X == GPIOH)?6:0)
 
-
-#define IRQ_NO_EXTI0		6
-#define IRQ_NO_EXTI1		7
-#define IRQ_NO_EXTI2		8
-#define IRQ_NO_EXTI3		9
-#define IRQ_NO_EXTI4		10
-#define IRQ_NO_EXTI9_5		23
-#define IRQ_NO_EXTI5_10		40
-
+#define IRQ_NO_EXTI0 		6
+#define IRQ_NO_EXTI1 		7
+#define IRQ_NO_EXTI2 		8
+#define IRQ_NO_EXTI3 		9
+#define IRQ_NO_EXTI4 		10
+#define IRQ_NO_EXTI9_5 		23
+#define IRQ_NO_EXTI15_10 	40
 
 
 #include "stm32f446xx_gpio_driver.h"
