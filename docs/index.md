@@ -206,7 +206,7 @@ _**NOTE : SET THE PinOPType AS NONE WHEN SETTING THE PIN AS INPUT**_
 1.IRQNumber-
    It is define IRQ Number of the Corresponding GPIO Pin's EXTI Engine 
    (Parameter:IRQ_NO_EXTI0,...,IRQ_NO_EXTI4,IRQ_NO_EXTI5_9,IRQ_NO_EXTI15_10)
-   _Note: The x in IRQ_NO_EXTIx matches the corresponding GPIO Pin you want to set it up_
+   <br />_Note: The x in IRQ_NO_EXTIx matches the corresponding GPIO Pin you want to set it up_
 
 2.EnorDi -
    It is used the enable or disable the corresponding EXTI Engine (Parameters: ENABLE,DISABLE)
@@ -221,12 +221,12 @@ Setting up the Interrupt for GPIO Pin 13
 ```markdown
 	GPIO_IRQPriorityConfig(IRQNumber, IRQPriority)
 ```
-<br>
+
 ##### Parameter -
 1.IRQNumber-
    It is define IRQ Number of the Corresponding GPIO Pin's EXTI Engine 
    (Parameter:IRQ_NO_EXTI0,...,IRQ_NO_EXTI4,IRQ_NO_EXTI5_9,IRQ_NO_EXTI15_10)
-   _Note: The x in IRQ_NO_EXTIx matches the corresponding GPIO Pin you want to set it up_
+   <br />_Note: The x in IRQ_NO_EXTIx matches the corresponding GPIO Pin you want to set it up_
 
 2.IRQPriority -
    It is used set the the Interrupt Priority Number of the Interrupt (Parameters: 15,.....,1)
